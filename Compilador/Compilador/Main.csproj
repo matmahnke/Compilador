@@ -93,5 +93,11 @@
     <Content Include="img\recortar.png" />
     <Content Include="img\salvar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rules\Rules.csproj">
+      <Project>{8E2B9C80-F1E6-4F3C-A7C1-8C6323452EE4}</Project>
+      <Name>Rules</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
