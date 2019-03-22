@@ -27,6 +27,7 @@ namespace Main
         {
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(OnKeyDown);
+            
         }
 
         private void editor_TextChanged(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace Main
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
+        
 
             switch (e.KeyCode.ToString())
             {
@@ -62,7 +64,6 @@ namespace Main
                 case "F9":
                     mensagens.Text = compiler.Compile();
                     break;
-
                 default:
                     break;
             }
@@ -71,6 +72,34 @@ namespace Main
         private void btnCompilar_Click(object sender, EventArgs e)
         {
             mensagens.Text = compiler.Compile();
+        }
+
+        private void editor_UpdateUI(object sender, UpdateUIEventArgs e)
+        {
+            if ((e.Change & UpdateChange.Selection) > 0)
+            {
+                // The caret/selection changed
+                var currentPos = editor.CurrentPosition;
+                var anchorPos = editor.AnchorPosition;
+                var texto_selecionado = "Ch: " + currentPos + " Sel: " + Math.Abs(anchorPos - currentPos);
+
+                MessageBox.Show(texto_selecionado);
+            }
+        }
+
+        private void btnCopiar_Click(object sender, EventArgs e)
+        {
+            editor.Copy();
+        }
+
+        private void btnColar_Click(object sender, EventArgs e)
+        {
+            editor.Paste();
+        }
+
+        private void btnRecortar_Click(object sender, EventArgs e)
+        {
+            editor.Cut();
         }
     }
 }

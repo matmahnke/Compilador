@@ -142,6 +142,7 @@ namespace Main
             this.btnCopiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCopiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCopiar.UseVisualStyleBackColor = true;
+            this.btnCopiar.Click += new System.EventHandler(this.btnCopiar_Click);
             // 
             // btnColar
             // 
@@ -156,6 +157,7 @@ namespace Main
             this.btnColar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnColar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnColar.UseVisualStyleBackColor = true;
+            this.btnColar.Click += new System.EventHandler(this.btnColar_Click);
             // 
             // btnRecortar
             // 
@@ -170,6 +172,7 @@ namespace Main
             this.btnRecortar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRecortar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRecortar.UseVisualStyleBackColor = true;
+            this.btnRecortar.Click += new System.EventHandler(this.btnRecortar_Click);
             // 
             // editor
             // 
