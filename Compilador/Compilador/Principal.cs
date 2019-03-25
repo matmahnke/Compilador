@@ -128,7 +128,7 @@ namespace Main
                 if (fileManager.OpenFile())
                 {
                     editor.Text = fileManager.fileContent;
-                    barraStatus.Text = fileManager.fileName;
+                    barraStatus.Text = fileManager.filePath;
                 }
             }
             catch (Exception ex)
@@ -144,12 +144,16 @@ namespace Main
                 fileManager.SaveFile(editor.Text);
                 mensagens.Text = "";
                 MessageBox.Show("Arquivo salvo com sucesso!");
-                barraStatus.Text = fileManager.fileName;
+                barraStatus.Text = fileManager.filePath;
+            }
+            catch (ArgumentException e)
+            {
+                MessageBox.Show("O arquivo não foi salvo, nenhuma local selecionada!");
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format("Não foi possível salvar o arquivo. Descrição: {0}", e.Message), "Erro");
-            }         
+                MessageBox.Show(string.Format("Não foi possível salvar o arquivo. Descrição: {0}", e.Message), "Atenção");
+            }
         }
 
         private void ShowTeam()

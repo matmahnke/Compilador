@@ -9,7 +9,7 @@ namespace Rules
     public class FileManager
     {
         private OpenFileDialog openFileDialog;
-        public string fileName {get;set;}
+        public string filePath { get;set;}
         public string fileContent
         {
             get
@@ -18,7 +18,7 @@ namespace Rules
                 {
                     throw new FileNotFoundException("Nenhum arquivo aberto");
                 }
-                StreamReader streamReader = new StreamReader(fileName);
+                StreamReader streamReader = new StreamReader(filePath);
                 string text = streamReader.ReadToEnd();
                 streamReader.Close();
                 return text;
@@ -32,7 +32,7 @@ namespace Rules
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                fileName = openFileDialog.FileName;
+                filePath = openFileDialog.FileName;
                 return true;
             }
 
@@ -43,20 +43,20 @@ namespace Rules
         {
             if (FileOpenExists())
             {
-                WriteFile(fileName, fileText);
+                WriteFile(filePath, fileText);
             }
             else
             {
                 string path = SelectPathToSave();
                 CreateFile(path);
                 WriteFile(path, fileText);
-                fileName = path;
+                filePath = path;
             }
         }
 
         private bool FileOpenExists()
         {
-            return File.Exists(fileName);
+            return File.Exists(filePath);
         }
 
         private void WriteFile(string path, string fileText)
@@ -81,8 +81,7 @@ namespace Rules
 
         private void CreateFile(string path)
         {
-            var newFile = File.Create(path);
-            newFile.Close();
+            File.Create(path).Close();
         }
     }
 }
