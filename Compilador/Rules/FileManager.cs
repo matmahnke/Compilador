@@ -8,50 +8,36 @@ namespace Rules
 {
     public class FileManager
     {
-        private OpenFileDialog fileDialog;
-        private bool fileOpen;
-        public String absolutePath
+        private OpenFileDialog openFileDialog;
+        public string fileName {get;set;}
+        public string fileContent
         {
             get
-            {
-                if (fileDialog == null || !fileOpen)
+            {  
+                if (!FileOpenExists())
                 {
                     throw new FileNotFoundException("Nenhum arquivo aberto");
                 }
-                FileInfo fileInfo = new FileInfo(fileDialog.FileName);
-                return fileInfo.DirectoryName + "\\" + fileInfo.Name;
+                StreamReader streamReader = new StreamReader(fileName);
+                string text = streamReader.ReadToEnd();
+                streamReader.Close();
+                return text;
             }
         }
-
-        public String fileContent
-        {
-            get
-            {
-                if (fileDialog == null || !fileOpen)
-                {
-                    throw new FileNotFoundException("Nenhum arquivo aberto");
-                }
-                var sr = new StreamReader(fileDialog.FileName);
-                return sr.ReadToEnd();
-            }
-        }
-
-        public FileManager()
-        {
-            fileOpen = false;
-        }
-       
+     
         public bool OpenFile()
         {
             try
             {
-                fileDialog = new OpenFileDialog();
-                fileDialog.Filter = "Text|*.txt";
+                openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Text|*.txt";
 
-                fileOpen = fileDialog.ShowDialog() == DialogResult.OK;
-
-                return fileOpen;
-
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = openFileDialog.FileName;
+                    return true;
+                }
+                return false;
             }
             catch (Exception e)
             {
@@ -61,27 +47,50 @@ namespace Rules
             }
         }
         
-        //TO DO IMPLEMENT
-        public void SaveFile()
+        public void SaveFile(String fileText)
         {
-            if (!fileOpen)
+            if (FileOpenExists())
             {
-                SelectPathToSave();
+                WriteFile(fileName, fileText);
+            }
+            else
+            {
+                string path = SelectPathToSave();
+                CreateFile(path);
+                WriteFile(path, fileText);
+            }
+        }
+
+        private bool FileOpenExists()
+        {
+            return File.Exists(fileName);
+        }
+
+        private void WriteFile(string path, string fileText)
+        {
+            StreamWriter writer = new StreamWriter(path);
+            writer.Write(fileText);
+            writer.Close();
+        }
+        
+        private string SelectPathToSave()
+        {
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text|*.txt";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return saveFileDialog.FileName;
             }
 
-
-
+            return "";
         }
 
-        public void SelectPathToSave()
+        private void CreateFile(string path)
         {
-        }
-
-        public void Save()
-        {
-
-
-
+            var newFile = File.Create(path);
+            newFile.Close();
         }
     }
 }

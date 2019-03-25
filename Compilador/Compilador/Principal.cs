@@ -46,12 +46,7 @@ namespace Main
             editor.Margins[0].Width = editor.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
             this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
-
-        private void btnEquipe_Click(object sender, EventArgs e)
-        {
-            ShowTeam();
-        }
-
+       
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -73,6 +68,11 @@ namespace Main
             {
                 SaveFile();
             }
+        }
+
+        private void btnEquipe_Click(object sender, EventArgs e)
+        {
+            ShowTeam();
         }
 
         private void btnCompilar_Click(object sender, EventArgs e)
@@ -100,10 +100,21 @@ namespace Main
             OpenFile();
         }
 
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            NewFile();
+        }
+
         private void NewFile()
         { 
             editor.Text = "";
             mensagens.Text = "";
+            barraStatus.Text = "";
             fileManager = new FileManager();
         }
 
@@ -111,10 +122,12 @@ namespace Main
         {
             try
             {
+                fileManager = new FileManager();
+
                 if (fileManager.OpenFile())
                 {
                     editor.Text = fileManager.fileContent;
-                    barraStatus.Text = fileManager.absolutePath;
+                    barraStatus.Text = fileManager.fileName;
                 }
             }
             catch (Exception ex)
@@ -125,6 +138,7 @@ namespace Main
 
         private void SaveFile()
         {
+            fileManager.SaveFile(editor.Text);
             mensagens.Text = "";
         }
 
@@ -137,7 +151,6 @@ namespace Main
         {
             mensagens.Text = compiler.Compile();
         }
-
 
     }
 }
