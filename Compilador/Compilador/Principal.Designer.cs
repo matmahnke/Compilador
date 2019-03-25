@@ -41,10 +41,9 @@ namespace Main
             this.btnColar = new System.Windows.Forms.Button();
             this.btnRecortar = new System.Windows.Forms.Button();
             this.editor = new ScintillaNET.Scintilla();
-            this.barraStatus = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mensagens = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.barraStatus = new System.Windows.Forms.TextBox();
             btnCompilar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +110,7 @@ namespace Main
             this.btnAbrir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAbrir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAbrir.UseVisualStyleBackColor = true;
+            this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click);
             // 
             // btnSalvar
             // 
@@ -186,19 +186,6 @@ namespace Main
             this.editor.TabIndex = 15;
             this.editor.TextChanged += new System.EventHandler(this.editor_TextChanged);
             // 
-            // barraStatus
-            // 
-            this.barraStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.barraStatus.Location = new System.Drawing.Point(3, 602);
-            this.barraStatus.MinimumSize = new System.Drawing.Size(900, 30);
-            this.barraStatus.Name = "barraStatus";
-            this.barraStatus.ReadOnly = true;
-            this.barraStatus.Size = new System.Drawing.Size(900, 30);
-            this.barraStatus.TabIndex = 17;
-            this.barraStatus.Text = "";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -233,27 +220,26 @@ namespace Main
             this.mensagens.Text = "";
             this.mensagens.WordWrap = false;
             // 
-            // textBox1
+            // barraStatus
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.barraStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(3, 528);
-            this.textBox1.MaxLength = 0;
-            this.textBox1.MinimumSize = new System.Drawing.Size(880, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(880, 20);
-            this.textBox1.TabIndex = 19;
+            this.barraStatus.Location = new System.Drawing.Point(3, 531);
+            this.barraStatus.MaxLength = 0;
+            this.barraStatus.MinimumSize = new System.Drawing.Size(880, 30);
+            this.barraStatus.Name = "barraStatus";
+            this.barraStatus.ReadOnly = true;
+            this.barraStatus.Size = new System.Drawing.Size(880, 20);
+            this.barraStatus.TabIndex = 19;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.barraStatus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mensagens);
-            this.Controls.Add(this.barraStatus);
             this.Controls.Add(this.editor);
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 600);
@@ -276,10 +262,9 @@ namespace Main
         private System.Windows.Forms.Button btnColar;
         private System.Windows.Forms.Button btnRecortar;
         private ScintillaNET.Scintilla editor;
-        private System.Windows.Forms.RichTextBox barraStatus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox mensagens;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox barraStatus;
     }
 
 
