@@ -27,24 +27,16 @@ namespace Rules
      
         public bool OpenFile()
         {
-            try
-            {
-                openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Text|*.txt";
+            openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text|*.txt";
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    fileName = openFileDialog.FileName;
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception e)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(string.Format("Não foi possível abrir o arquivo. Erro: {0}", e.ToString()));
-                return false;
-
+                fileName = openFileDialog.FileName;
+                return true;
             }
+
+            return false;
         }
         
         public void SaveFile(String fileText)

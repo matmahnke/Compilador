@@ -55,6 +55,7 @@ namespace Main
             }
             else if (e.KeyCode == Keys.F9)
             {
+                Compile();
             }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.N)
             {
@@ -138,8 +139,16 @@ namespace Main
 
         private void SaveFile()
         {
-            fileManager.SaveFile(editor.Text);
-            mensagens.Text = "";
+            try
+            {
+                fileManager.SaveFile(editor.Text);
+                mensagens.Text = "";
+                MessageBox.Show("Arquivo salvo com sucesso!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(string.Format("Não foi possível salvar o arquivo. Erro: {0}", e.Message), "Erro");
+            }         
         }
 
         private void ShowTeam()
