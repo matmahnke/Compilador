@@ -50,6 +50,7 @@ namespace Rules
                 string path = SelectPathToSave();
                 CreateFile(path);
                 WriteFile(path, fileText);
+                fileName = path;
             }
         }
 
@@ -67,7 +68,6 @@ namespace Rules
         
         private string SelectPathToSave()
         {
-
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text|*.txt";
 

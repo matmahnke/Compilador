@@ -144,10 +144,11 @@ namespace Main
                 fileManager.SaveFile(editor.Text);
                 mensagens.Text = "";
                 MessageBox.Show("Arquivo salvo com sucesso!");
+                barraStatus.Text = fileManager.fileName;
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format("Não foi possível salvar o arquivo. Erro: {0}", e.Message), "Erro");
+                MessageBox.Show(string.Format("Não foi possível salvar o arquivo. Descrição: {0}", e.Message), "Erro");
             }         
         }
 
