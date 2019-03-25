@@ -71,14 +71,17 @@ namespace Main
             }
         }
 
-        private void btnEquipe_Click(object sender, EventArgs e)
+        private void btnNovo_Click(object sender, EventArgs e)
         {
-            ShowTeam();
+            NewFile();
         }
-
-        private void btnCompilar_Click(object sender, EventArgs e)
+        private void btnAbrir_Click(object sender, EventArgs e)
         {
-            mensagens.Text = compiler.Compile();
+            OpenFile();
+        }
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SaveFile();
         }
 
         private void btnCopiar_Click(object sender, EventArgs e)
@@ -95,20 +98,13 @@ namespace Main
         {
             editor.Cut();
         }
-
-        private void btnAbrir_Click(object sender, EventArgs e)
+        private void btnCompilar_Click(object sender, EventArgs e)
         {
-            OpenFile();
+            mensagens.Text = compiler.Compile();
         }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private void btnEquipe_Click(object sender, EventArgs e)
         {
-            SaveFile();
-        }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            NewFile();
+            ShowTeam();
         }
 
         private void NewFile()
