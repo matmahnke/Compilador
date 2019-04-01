@@ -1,0 +1,21 @@
+mai : [A-Z]
+
+min : [a-z]
+
+dig : [0-9]
+
+letra : {mai} | {min}
+
+// Identificados
+sequenciaNMai : ({min} | {dig} | _)
+
+sequenciaIMai : {mai} ({sequenciaNMai}?)*
+
+sequenciaIMin : {min} ({mai}?({sequenciaNMai})+)*{mai}?
+
+// Bloco de comentario
+inicio : #\|
+
+fim : \|#
+
+exc : [^# \|]

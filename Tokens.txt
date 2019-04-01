@@ -1,0 +1,33 @@
+// a: Identificador
+identificador : ({sequenciaIMai} | {sequenciaIMin})
+
+// b: Constante Inteira
+constanteInteira : 0 | ([1-9] | {dig}*)
+
+// c: Constante Real
+constanteReal : (0 | ([1-9] | {dig}*)) \. (0 | ({dig}* [1-9]))
+  
+// d: Constante String
+constanteString : \" [^\\ \n \"]* \"
+
+// e: Constante Caractere
+constanteCaractere : \\(\s|n|t)
+
+// f: Comentário de linha
+// comentarioLinha : [^\n]* 
+
+// g: Comentário bloco
+bloco : {inicio} {exc} ((#+ \|)? {exc})* {exc}? {fim}
+
+// Palavras reservadas
+  
+
+// Simbolos especiais
+"+"
+"*"
+"*"
+"/"
+"?"
+
+// Formatação
+:[\s\n\t]
