@@ -94,8 +94,8 @@
     <Content Include="img\salvar.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rules\Rules.csproj">
-      <Project>{8E2B9C80-F1E6-4F3C-A7C1-8C6323452EE4}</Project>
+    <ProjectReference Include="..\Rules\Rules\Rules.csproj">
+      <Project>{95318F16-84ED-4D01-A46C-A8BEAC1FA10D}</Project>
       <Name>Rules</Name>
     </ProjectReference>
   </ItemGroup>
