@@ -29,7 +29,7 @@ namespace Main
         {
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(OnKeyDown);
-            
+
         }
 
         private void editor_TextChanged(object sender, EventArgs e)

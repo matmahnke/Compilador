@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Main
 {
@@ -186,7 +187,10 @@ namespace Main
             this.editor.Name = "editor";
             this.editor.Size = new System.Drawing.Size(882, 350);
             this.editor.TabIndex = 15;
+            this.editor.VScrollBar = false;
             this.editor.TextChanged += new System.EventHandler(this.editor_TextChanged);
+            this.editor.Margins[0].Width = 16;
+
             // 
             // panel1
             // 
