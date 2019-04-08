@@ -1,12 +1,21 @@
-public class SemanticError extends AnalysisError
-{
-    public SemanticError(String msg, int position)
-	 {
-        super(msg, position);
-    }
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public SemanticError(String msg)
+namespace AnalisadorLexico
+{
+    public class SemanticError : AnalysisError
     {
-        super(msg);
+        public SemanticError(string msg, int position)
+        {
+            base(msg, position);
+        }
+
+        public SemanticError(string msg)
+        {
+            base(msg);
+        }
     }
 }

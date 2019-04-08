@@ -1,12 +1,21 @@
-public class SyntaticError extends AnalysisError
-{
-    public SyntaticError(String msg, int position)
-	 {
-        super(msg, position);
-    }
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public SyntaticError(String msg)
+namespace AnalisadorLexico
+{
+    public class SyntaticError : AnalysisError
     {
-        super(msg);
+        public SyntaticError(string msg, int position)
+        {
+            base(msg, position);
+        }
+
+        public SyntaticError(string msg)
+        {
+            base(msg);
+        }
     }
 }
