@@ -1,12 +1,13 @@
-public class LexicalError extends AnalysisError
+namespace AnalisadorLexico
 {
-    public LexicalError(String msg, int position)
-	 {
-        super(msg, position);
-    }
-
-    public LexicalError(String msg)
+    public class LexicalError : AnalysisError
     {
-        super(msg);
+        public LexicalError(string msg, int position) : base(msg, position)
+        {
+        }
+
+        public LexicalError(string msg) : base(msg)
+        {
+        }
     }
 }

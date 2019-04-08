@@ -10,15 +10,13 @@ namespace AnalisadorLexico
     {
         private int Position { get; set; }
 
-        public AnalysisError(string msg, int position)
+        public AnalysisError(string msg, int position) : base(msg)
         {
-            base(msg);
             this.Position = position;
         }
 
-        public AnalysisError(string msg)
+        public AnalysisError(string msg) : base(msg) 
         {
-            base(msg);
             this.Position = -1;
         }
 
